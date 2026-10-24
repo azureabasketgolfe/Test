@@ -12,12 +12,15 @@ if (!token) {
   throw new Error("La variable d'environnement FFBB_TOKEN est absente.");
 }
 
+
 async function apiGet(collection, query = {}) {
   const params = new URLSearchParams();
 
   for (const [key, value] of Object.entries(query)) {
     if (Array.isArray(value)) {
-      for (const item of value) params.append(key, item);
+      for (const item of value) {
+        params.append(key, item);
+      }
     } else {
       params.append(key, value);
     }
@@ -26,20 +29,43 @@ async function apiGet(collection, query = {}) {
   const url = `${API}/items/${collection}?${params.toString()}`;
 
   const response = await fetch(url, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/json",
+    },
+    redirect: "follow",
   });
 
-  const body = await response.json();
+  const contentType = response.headers.get("content-type") || "";
+  const text = await response.text();
 
-  if (!response.ok || body.errors) {
+  console.log(`URL appelée : ${url}`);
+  console.log(`HTTP : ${response.status} ${response.statusText}`);
+  console.log(`Content-Type : ${contentType}`);
+
+  if (!response.ok) {
     throw new Error(
-      `Erreur FFBB ${response.status} sur ${collection}: ` +
-      JSON.stringify(body.errors ?? body)
+      `Erreur HTTP ${response.status}. Réponse : ${text.slice(0, 500)}`
     );
   }
 
-  return body.data;
+  try {
+    const body = JSON.parse(text);
+
+    if (body.errors) {
+      throw new Error(JSON.stringify(body.errors));
+    }
+
+    return body.data;
+  } catch (error) {
+    console.error("Début de la réponse reçue :", text.slice(0, 500));
+    throw new Error(
+      `Réponse non JSON reçue pour ${collection}. ` +
+      `Content-Type : ${contentType}. Détail : ${error.message}`
+    );
+  }
 }
+
 
 function relationId(value) {
   if (value && typeof value === "object") return value.id;
