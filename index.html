@@ -546,7 +546,7 @@ const RFU13_MATCHES = [];
 const DFU18_MATCHES = [];
 
 const DFU15_MATCHES = [];
-
+const DFU13_MATCHES = [];
 const DFU11_MATCHES = [];
 const DIVERS_MATCHES = [];
 
@@ -1168,22 +1168,44 @@ function fmtLong(iso) {
 const CAT_LABEL = {n3:'N3', pnm:'PNM', u15:'RMU15', u18:'RMU18', u13:'RMU13', prm:'PRM', u21:'U21 R', u18d3:'DMU18-3', u11:'DMU11', u11d3:'DMU11-3', u18pr:'PRMU18', u15d2:'DMU15-2', u13pr:'PRMU13', u13d3:'DMU13-3', nf2:'NF2', pnf:'PNF', prf:'PRF', rfu18:'RF U18', rfu15:'RF U15', rfu13:'RF U13', dfu18:'DF U18', dfu15:'DF U15', dfu11:'DF U11', divers:'Divers'};
 
 const CATEGORY_CONSTANTS = {
-  "Départementale masculine U11": U11_MATCHES,
-  "Départementale masculine U11 - Division 3": U11D3_MATCHES,
   "NATIONALE MASCULINE 3": MATCHES,
-  "Phase 1 - Départemental Masculine U18 Division - 3": U18D3_MATCHES,
-  "Phase 1 - Départementale masculine U13 - 3": U13D3_MATCHES,
-  "Phase 1 - Départementale masculine U15 - 2": U15D2_MATCHES,
-  "Phase 1 - Pré Région masculine U18": U18PR_MATCHES,
-  "Phase 1 - Pré région masculine U13 - 1": U13PR_MATCHES,
   "Pré nationale masculine": PNM_MATCHES,
   "Pré régionale masculine": PRM_MATCHES,
-  "Régionale masculine U13": U13_MATCHES,
-  "Régionale masculine U13 - Phase 2": U13_MATCHES,
+  "Régionale masculine U21": U21_MATCHES,
+  "Régionale masculine U18 - Division 2": U18_MATCHES,
   "Régionale masculine U15": U15_MATCHES,
   "Régionale masculine U15 - Phase 2": U15_MATCHES,
-  "Régionale masculine U18 - Division 2": U18_MATCHES,
-  "Régionale masculine U21": U21_MATCHES,
+  "Régionale masculine U13": U13_MATCHES,
+  "Régionale masculine U13 - Phase 2": U13_MATCHES,
+  "Phase 1 - Pré Région masculine U18": U18PR_MATCHES,
+  "Pré régionale masculine U18 phase 2": U18PR_MATCHES,
+  "Phase 1 - Départemental Masculine U18 Division - 3": U18D3_MATCHES,
+  "Départementale masculine U18-2 phase 2": U18D3_MATCHES,
+  "Départementale Masculine U15-2 Phase 2": U15D2_MATCHES,
+  "Phase 1 - Départementale masculine U15 - 2": U15D2_MATCHES,
+  "Phase 1 - Pré région masculine U13 - 1": U13PR_MATCHES,
+  "Pré régional masculine U13 phase 2": U13PR_MATCHES,
+  "Phase 1 - Départementale masculine U13 - 3": U13D3_MATCHES,
+  "Départementale masculine U13 - 2 poule B phase 2": U13D3_MATCHES,
+  "Départementale masculine U13-2 poule A phase 2": U13D3_MATCHES,
+  "Départementale masculine U11": U11_MATCHES,
+  "Pré régionale masculine U11": U11_MATCHES,
+  "Départementale masculine U11 - 3 phase": U11D3_MATCHES,
+  "Départementale masculine U11 - Division 3": U11D3_MATCHES,
+
+"Départementale féminine U11":DFU11_MATCHES,
+"Départementale féminine U13 - Division 2":DFU13_MATCHES,
+"Départementale féminine U15":DFU15_MATCHES,
+"Départementale féminine U18":DFU18_MATCHES,
+"NATIONALE FEMININE 2": NF2_MATCHES,
+"Pré nationale féminine":PNF_MATCHES,
+"Pré régionale féminine":PRF_MATCHES,
+"Régionale féminine U13":RFU13_MATCHES,
+"Régionale féminine U13 - Division 2":RFU13_MATCHES,
+"Régionale féminine U15":RFU15_MATCHES,
+"Régionale féminine U15 - Phase 2":RFU15_MATCHES,
+"Régionale féminine U18":RFU18_MATCHES,
+"Régionale féminine U18 - Phase 2":RFU18_MATCHES,
 };
 
 function convertirRencontre(rencontre) {
