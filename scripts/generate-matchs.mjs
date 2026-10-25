@@ -4,7 +4,7 @@ import { writeFile } from "node:fs/promises";
 const API = "https://api.ffbb.com";
 const CLUB_CODE_GOLFE = "SUD0006008";
 const CLUB_CODE_CTC = "SUD0006012";
-const OUTPUT = "matchsAll.json";
+const OUTPUT = "matchs.json";
 
   const fields = [
     "id",
