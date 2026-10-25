@@ -2,16 +2,16 @@
 import { writeFile } from "node:fs/promises";
 
 const API = "https://api.ffbb.com";
-const CLUB_ID = "SUD0006008";
 const CLUB_CODE = "SUD0006008";
 const OUTPUT = "matchs.json";
 
 const token = process.env.FFBB_TOKEN;
 
 if (!token) {
-  throw new Error("La variable d'environnement FFBB_TOKEN est absente.");
+  throw new Error(
+    "La variable d'environnement FFBB_TOKEN est absente."
+  );
 }
-
 
 async function apiGet(collection, query = {}) {
   const params = new URLSearchParams();
@@ -22,7 +22,7 @@ async function apiGet(collection, query = {}) {
         params.append(key, item);
       }
     } else {
-      params.append(key, value);
+      params.append(key, String(value));
     }
   }
 
@@ -33,71 +33,144 @@ async function apiGet(collection, query = {}) {
       Authorization: `Bearer ${token}`,
       Accept: "application/json",
     },
-    redirect: "follow",
   });
 
-  const contentType = response.headers.get("content-type") || "";
   const text = await response.text();
 
-  console.log(`URL appelée : ${url}`);
-  console.log(`HTTP : ${response.status} ${response.statusText}`);
-  console.log(`Content-Type : ${contentType}`);
-
-  if (!response.ok) {
-    throw new Error(
-      `Erreur HTTP ${response.status}. Réponse : ${text.slice(0, 500)}`
-    );
-  }
-
+  let body;
   try {
-    const body = JSON.parse(text);
-
-    if (body.errors) {
-      throw new Error(JSON.stringify(body.errors));
-    }
-
-    return body.data;
-  } catch (error) {
-    console.error("Début de la réponse reçue :", text.slice(0, 500));
+    body = JSON.parse(text);
+  } catch {
     throw new Error(
-      `Réponse non JSON reçue pour ${collection}. ` +
-      `Content-Type : ${contentType}. Détail : ${error.message}`
+      `Réponse non JSON de FFBB (${response.status}) sur ${collection}. ` +
+      `Début de réponse : ${text.slice(0, 300)}`
     );
   }
+
+  if (!response.ok || body.errors) {
+    throw new Error(
+      `Erreur FFBB ${response.status} sur ${collection}: ` +
+      JSON.stringify(body.errors ?? body)
+    );
+  }
+
+  return body.data;
 }
 
-
 function relationId(value) {
-  if (value && typeof value === "object") return value.id;
+  if (value && typeof value === "object") {
+    return value.id;
+  }
   return value;
 }
 
-async function main() {
-  console.log("Recherche du club...");
+async function rechercherClub() {
+  const fields = [
+    "id",
+    "code",
+    "nom",
+    "engagements.id",
+    "engagements.nom",
+    "engagements.idPoule.id",
+    "engagements.idPoule.nom",
+    "engagements.idCompetition.nom",
+    "engagements.idCompetition.saison.actif",
+"engagements.numeroEquipe",
+"engagements.idCompetition.id",
+"engagements.idCompetition.code",
+"engagements.idCompetition.typeCompetition",
+"engagements.idCompetition.categorie.code",
+"engagements.idCompetition.categorie.ordre",
+"engagements.idCompetition.idCompetitionPere.id",
+"engagements.idCompetition.idCompetitionPere.nom"
+  ];
 
-  const clubs = await apiGet("ffbbserver_organismes", {
-    "filter[id][_eq]": CLUB_ID,
+  const queryBase = {
     limit: "1",
-    "fields[]": ["id", "nom", "engagements.id",
-      "engagements.nom", "engagements.idPoule.id",
-      "engagements.idPoule.nom",
-      "engagements.idCompetition.nom",
-      "engagements.idCompetition.saison.actif"],
+    "fields[]": fields,
     "deep[engagements][_limit]": "1000",
     "deep[engagements][_filter][idCompetition][saison][actif][_eq]":
       "true",
+  };
+
+  console.log(`Recherche du club par code : ${CLUB_CODE}`);
+
+  // Le code du club et son identifiant technique peuvent être différents.
+  let clubs = await apiGet("ffbbserver_organismes", {
+    ...queryBase,
+    "filter[code][_eq]": CLUB_CODE,
   });
 
-  const club = clubs?.[0];
-
-  if (!club) {
-    throw new Error(
-      `Club ${CLUB_ID} introuvable. Vérifie son identifiant dans l'API.`
-    );
+  if (clubs?.length) {
+    console.log("Club trouvé grâce au champ code.");
+    return clubs[0];
   }
 
+  console.log(
+    "Aucun résultat par code. Nouvelle tentative par identifiant technique..."
+  );
+
+  clubs = await apiGet("ffbbserver_organismes", {
+    ...queryBase,
+    "filter[id][_eq]": CLUB_CODE,
+  });
+
+  if (clubs?.length) {
+    console.log("Club trouvé grâce au champ id.");
+    return clubs[0];
+  }
+
+  // Diagnostic complémentaire : examiner quelques organismes visibles.
+  console.log(
+    "Aucun résultat avec code ou id. Lecture de quelques organismes accessibles..."
+  );
+
+  const exemples = await apiGet("ffbbserver_organismes", {
+    limit: "5",
+    "fields[]": ["id", "code", "nom"],
+  });
+
+  console.log(
+    "Exemples d'organismes retournés :",
+    JSON.stringify(exemples, null, 2)
+  );
+
+  throw new Error(
+    `Club ${CLUB_CODE} introuvable par code ou par id. ` +
+    "Consulte les exemples affichés pour vérifier les champs disponibles."
+  );
+}
+
+async function main() {
+  const club = await rechercherClub();
+
+  console.log(
+    `Club trouvé : ${club.nom} (id=${club.id}, code=${club.code})`
+  );
   const engagements = club.engagements ?? [];
-  console.log(`${club.nom}: ${engagements.length} engagements trouvés.`);
+console.log(
+  [...new Set(
+    engagements.map(e => e.idCompetition?.nom).filter(Boolean)
+  )].sort().join("\n")
+);
+
+/*console.log(
+  JSON.stringify(
+    engagements.map(e => ({
+      equipe: e.nom,
+      numeroEquipe: e.numeroEquipe,
+      competition: e.idCompetition?.nom,
+      codeCompetition: e.idCompetition?.code,
+      typeCompetition: e.idCompetition?.typeCompetition,
+      categorie: e.idCompetition?.categorie,
+      competitionParente:
+        e.idCompetition?.idCompetitionPere,
+    })),
+    null,
+    2
+  )
+);*/
+  console.log(`${engagements.length} engagements trouvés.`);
 
   const pools = new Map();
 
@@ -105,33 +178,48 @@ async function main() {
     const poolId = relationId(engagement.idPoule);
     if (!poolId) continue;
 
-    if (!pools.has(String(poolId))) {
-      pools.set(String(poolId), {
-        id: String(poolId),
-        nom: engagement.idPoule?.nom ?? "",
-        equipes: [],
-      });
-    }
+    const poolKey = String(poolId);
+const competition = engagement.idCompetition;
 
-    pools.get(String(poolId)).equipes.push(engagement);
+const categorie =
+  competition?.idCompetitionPere?.nom ??
+  competition?.nom ??
+  "";
+
+    if (!pools.has(poolKey)) {
+      pools.set(poolKey, {
+  id: poolKey,
+  nom:
+    typeof engagement.idPoule === "object"
+      ? engagement.idPoule.nom ?? ""
+      : "",
+  competition: categorie,
+});
+    }
   }
 
   const matches = new Map();
 
   for (const pool of pools.values()) {
-    console.log(`Lecture de la poule ${pool.nom || pool.id}...`);
+    console.log(
+      `Lecture de la poule ${pool.nom || pool.id}...`
+    );
 
-    const poules = await apiGet(
+    const poolData = await apiGet(
       `ffbbserver_poules/${encodeURIComponent(pool.id)}`,
       {
         "fields[]": [
-          "id", "nom",
-          "rencontres.id", "rencontres.numero",
+          "id",
+          "nom",
+          "rencontres.id",
+          "rencontres.numero",
           "rencontres.numeroJournee",
           "rencontres.date_rencontre",
-          "rencontres.nomEquipe1", "rencontres.nomEquipe2",
+          "rencontres.nomEquipe1",
+          "rencontres.nomEquipe2",
           "rencontres.resultatEquipe1",
-          "rencontres.resultatEquipe2", "rencontres.joue",
+          "rencontres.resultatEquipe2",
+          "rencontres.joue",
           "rencontres.idEngagementEquipe1.id",
           "rencontres.idEngagementEquipe1.idOrganisme.code",
           "rencontres.idEngagementEquipe2.id",
@@ -145,33 +233,44 @@ async function main() {
       }
     );
 
-    const poolData = Array.isArray(poules) ? poules[0] : poules;
-    if (!poolData) continue;
+    // Un endpoint /items/collection/id renvoie normalement un objet.
+    const poule = Array.isArray(poolData)
+      ? poolData[0]
+      : poolData;
 
-    for (const m of poolData.rencontres ?? []) {
-      const code1 = m.idEngagementEquipe1?.idOrganisme?.code;
-      const code2 = m.idEngagementEquipe2?.idOrganisme?.code;
+    if (!poule) {
+      console.warn(`Poule ${pool.id} introuvable ou inaccessible.`);
+      continue;
+    }
 
-      // Ne conserver que les rencontres de notre club.
-      if (code1 !== CLUB_CODE && code2 !== CLUB_CODE) continue;
+    for (const match of poule.rencontres ?? []) {
+      const code1 =
+        match.idEngagementEquipe1?.idOrganisme?.code;
+      const code2 =
+        match.idEngagementEquipe2?.idOrganisme?.code;
 
-      if (!m.date_rencontre) continue;
+      if (code1 !== CLUB_CODE && code2 !== CLUB_CODE) {
+        continue;
+      }
 
-      const salle = m.salle;
-      const id = String(m.id);
+      if (!match.date_rencontre) continue;
+
+      const salle = match.salle;
+      const id = String(match.id);
 
       matches.set(id, {
         id,
-        date: m.date_rencontre,
-        journee: m.numeroJournee ?? null,
-        numero: m.numero ?? null,
-        domicile: m.nomEquipe1 ?? "",
-        exterieur: m.nomEquipe2 ?? "",
-        scoreDomicile: m.resultatEquipe1 ?? null,
-        scoreExterieur: m.resultatEquipe2 ?? null,
-        joue: m.joue ?? false,
+	categorie: pool.competition,
+        date: match.date_rencontre,
+        journee: match.numeroJournee ?? null,
+        numero: match.numero ?? null,
+        domicile: match.nomEquipe1 ?? "",
+        exterieur: match.nomEquipe2 ?? "",
+        scoreDomicile: match.resultatEquipe1 ?? null,
+        scoreExterieur: match.resultatEquipe2 ?? null,
+        joue: match.joue ?? false,
         clubDomicile: code1 === CLUB_CODE,
-        poule: pool.nom,
+        poule: poule.nom ?? pool.nom,
         salle: salle?.libelle ?? null,
         ville: salle?.commune?.libelle ?? null,
       });
@@ -184,18 +283,24 @@ async function main() {
 
   const resultat = {
     club: club.nom,
-    codeClub: CLUB_CODE,
+    codeClub: club.code ?? CLUB_CODE,
     genereLe: new Date().toISOString(),
     nombreRencontres: rencontres.length,
     rencontres,
   };
 
-  await writeFile(OUTPUT, JSON.stringify(resultat, null, 2), "utf8");
+  await writeFile(
+    OUTPUT,
+    JSON.stringify(resultat, null, 2),
+    "utf8"
+  );
 
-  console.log(`${rencontres.length} rencontres écrites dans ${OUTPUT}.`);
+  console.log(
+    `${rencontres.length} rencontres écrites dans ${OUTPUT}.`
+  );
 }
 
 main().catch((error) => {
-  console.error(error);
+  console.error("Échec de génération du calendrier :", error.message);
   process.exitCode = 1;
 });
