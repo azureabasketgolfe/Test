@@ -409,7 +409,7 @@
   .match-card:last-child { border-bottom: none; }
   .mc-top { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
   .mc-time { font-size: 12px; color: var(--ink-soft); font-weight: 600; }
-  .mc-tag { font-size: 9.5px; padding: 1px 7px; border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+  .mc-tag { font-size: 9.5px; padding: 2px 7px; border-radius: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; max-width: 68%; white-space: normal; overflow-wrap: anywhere; text-align: right; }
   .mc-opponent { font-size: 14px; font-weight: 500; line-height: 1.3; }
   .mc-note { font-size: 11.5px; color: var(--ink-soft); margin-top: 3px; }
   @media (max-width: 420px) {
@@ -508,7 +508,6 @@ const PNM_MATCHES = [];
 const UNDATED_MATCHES = [];
 
 const U18_MATCHES = [];
-const U15_MATCHES = [];
 
 const U13_MATCHES = [];
 
@@ -654,7 +653,7 @@ function allMatches() {
     CATEGORY_ARRAYS[cat].forEach(m => {
       out.push({
         cat, opponent: m.opponent, date: m.date, time: m.time, venue: m.venue,
-        note: m.note, forfeit: !!m.forfeit, edited: false,
+        note: m.note, category: m.category || '', forfeit: !!m.forfeit, edited: false,
         gym: m.gym || defaultGym(cat)
       });
     });
@@ -667,7 +666,7 @@ function entriesFor(iso) {
   const dayMatches = allMatches().filter(m => m.date === iso);
 
   dayMatches.filter(m => m.cat === 'n3').forEach(m => {
-    out.push({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, forfeit: m.forfeit, gym: m.gym, cat: m.cat});
+    out.push({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, forfeit: m.forfeit, gym: m.gym, cat: m.cat, category: m.category});
   });
 
   EVENTS.forEach(x => {
@@ -680,7 +679,7 @@ function entriesFor(iso) {
 
   const secondary = dayMatches
     .filter(m => m.cat !== 'n3')
-    .map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, forfeit: m.forfeit, gym: m.gym, cat: m.cat}));
+    .map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, forfeit: m.forfeit, gym: m.gym, cat: m.cat, category: m.category}));
 
   if (!dayMatches.some(m => m.cat === 'n3')) {
     secondary.sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
@@ -913,7 +912,8 @@ function openPanel(iso, rawItems, rawSchool) {
     tag.className = 'mc-tag';
     tag.style.background = `var(${COMP_TINT[it.kind]})`;
     tag.style.color = `var(${COMP_COLOR[it.kind]})`;
-    tag.textContent = COMP_LABEL[it.kind];
+    tag.textContent = it.cat === 'divers' && it.category ? it.category : COMP_LABEL[it.kind];
+    if (it.cat === 'divers' && it.category) tag.title = it.category;
     top.appendChild(time);
     top.appendChild(tag);
     if (it.forfeit) {
@@ -1216,6 +1216,7 @@ function convertirRencontre(rencontre) {
     time,
     note,
     gym: null,
+    category: (rencontre.categorie || 'Catégorie non renseignée').trim(),
   };
 }
 
