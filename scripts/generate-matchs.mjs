@@ -2,8 +2,47 @@
 import { writeFile } from "node:fs/promises";
 
 const API = "https://api.ffbb.com";
-const CLUB_CODE = "SUD0006008";
-const OUTPUT = "matchs.json";
+const CLUB_CODE_GOLFE = "SUD0006008";
+const CLUB_CODE_CTC = "SUD0006012";
+const OUTPUT = "matchsAll.json";
+
+  const fields = [
+    "id",
+    "code",
+    "nom",
+    "engagements.id",
+    "engagements.nom",
+    "engagements.idPoule.id",
+    "engagements.idPoule.nom",
+    "engagements.idCompetition.nom",
+    "engagements.idCompetition.saison.actif",
+"engagements.numeroEquipe",
+"engagements.idCompetition.id",
+"engagements.idCompetition.code",
+"engagements.idCompetition.sexe",
+"engagements.idCompetition.typeCompetition",
+"engagements.idCompetition.categorie.code",
+"engagements.idCompetition.categorie.ordre",
+"engagements.idCompetition.idCompetitionPere.id",
+"engagements.idCompetition.idCompetitionPere.nom"
+  ];
+
+const queryBaseGolfe = {
+    limit: "1",
+    "fields[]": fields,
+    "deep[engagements][_limit]": "1000",
+    "deep[engagements][_filter][idCompetition][saison][actif][_eq]":
+      "true",
+  };
+
+ const queryBaseCTC = {
+    limit: "1",
+    "fields[]": fields,
+    "deep[engagements][_limit]": "1000",
+    "deep[engagements][_filter][idCompetition][saison][actif][_eq]":"true",
+    "deep[engagements][_filter][idCompetition][sexe][_eq]":"F",
+
+  };
 
 const token = process.env.FFBB_TOKEN;
 
@@ -64,41 +103,14 @@ function relationId(value) {
   return value;
 }
 
-async function rechercherClub() {
-  const fields = [
-    "id",
-    "code",
-    "nom",
-    "engagements.id",
-    "engagements.nom",
-    "engagements.idPoule.id",
-    "engagements.idPoule.nom",
-    "engagements.idCompetition.nom",
-    "engagements.idCompetition.saison.actif",
-"engagements.numeroEquipe",
-"engagements.idCompetition.id",
-"engagements.idCompetition.code",
-"engagements.idCompetition.typeCompetition",
-"engagements.idCompetition.categorie.code",
-"engagements.idCompetition.categorie.ordre",
-"engagements.idCompetition.idCompetitionPere.id",
-"engagements.idCompetition.idCompetitionPere.nom"
-  ];
+async function rechercherClub(queryBase, clubCode) {
 
-  const queryBase = {
-    limit: "1",
-    "fields[]": fields,
-    "deep[engagements][_limit]": "1000",
-    "deep[engagements][_filter][idCompetition][saison][actif][_eq]":
-      "true",
-  };
-
-  console.log(`Recherche du club par code : ${CLUB_CODE}`);
+  console.log(`Recherche du club par code : ${clubCode}`);
 
   // Le code du club et son identifiant technique peuvent être différents.
   let clubs = await apiGet("ffbbserver_organismes", {
     ...queryBase,
-    "filter[code][_eq]": CLUB_CODE,
+    "filter[code][_eq]": clubCode,
   });
 
   if (clubs?.length) {
@@ -112,7 +124,7 @@ async function rechercherClub() {
 
   clubs = await apiGet("ffbbserver_organismes", {
     ...queryBase,
-    "filter[id][_eq]": CLUB_CODE,
+    "filter[id][_eq]": clubCode,
   });
 
   if (clubs?.length) {
@@ -136,17 +148,53 @@ async function rechercherClub() {
   );
 
   throw new Error(
-    `Club ${CLUB_CODE} introuvable par code ou par id. ` +
+    `Club ${clubCode} introuvable par code ou par id. ` +
     "Consulte les exemples affichés pour vérifier les champs disponibles."
   );
 }
 
 async function main() {
-  const club = await rechercherClub();
-
+  const clubGolfe = await rechercherClub(queryBaseGolfe, CLUB_CODE_GOLFE);
   console.log(
-    `Club trouvé : ${club.nom} (id=${club.id}, code=${club.code})`
+    `Club trouvé : ${clubGolfe.nom} (id=${clubGolfe.id}, code=${clubGolfe.code})`
   );
+  const clubCtc = await rechercherClub(queryBaseCTC, CLUB_CODE_CTC);
+  console.log(
+    `Club trouvé : ${clubCtc.nom} (id=${clubCtc.id}, code=${clubCtc.code})`
+  );
+
+  const matches = new Map();
+
+  await rechercherRencontres(matches,clubGolfe,CLUB_CODE_GOLFE);
+  await rechercherRencontres(matches,clubCtc,CLUB_CODE_CTC);
+
+  const rencontres = [...matches.values()].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+  //const rencontres = { ...rencontresGolfe, ...rencontresCTC };
+
+  const resultat = {
+   /* club: club.nom,
+    codeClub: club.code,*/
+    genereLe: new Date().toISOString(),
+    nombreRencontres: rencontres.length,
+    rencontres,
+  };
+  
+  console.log(
+    `${rencontres.length} rencontres écrites dans ${OUTPUT}.`
+  );
+
+  await writeFile(
+    OUTPUT,
+    JSON.stringify(resultat, null, 2),
+    "utf8"
+  );
+
+}
+
+async function rechercherRencontres(matches,club,clubCode) {
+
   const engagements = club.engagements ?? [];
 console.log(
   [...new Set(
@@ -154,23 +202,7 @@ console.log(
   )].sort().join("\n")
 );
 
-/*console.log(
-  JSON.stringify(
-    engagements.map(e => ({
-      equipe: e.nom,
-      numeroEquipe: e.numeroEquipe,
-      competition: e.idCompetition?.nom,
-      codeCompetition: e.idCompetition?.code,
-      typeCompetition: e.idCompetition?.typeCompetition,
-      categorie: e.idCompetition?.categorie,
-      competitionParente:
-        e.idCompetition?.idCompetitionPere,
-    })),
-    null,
-    2
-  )
-);*/
-  console.log(`${engagements.length} engagements trouvés.`);
+ console.log(`${engagements.length} engagements trouvés.`);
 
   const pools = new Map();
 
@@ -198,7 +230,6 @@ const categorie =
     }
   }
 
-  const matches = new Map();
 
   for (const pool of pools.values()) {
     console.log(
@@ -249,7 +280,7 @@ const categorie =
       const code2 =
         match.idEngagementEquipe2?.idOrganisme?.code;
 
-      if (code1 !== CLUB_CODE && code2 !== CLUB_CODE) {
+      if (code1 !== clubCode && code2 !== clubCode) {
         continue;
       }
 
@@ -269,35 +300,14 @@ const categorie =
         scoreDomicile: match.resultatEquipe1 ?? null,
         scoreExterieur: match.resultatEquipe2 ?? null,
         joue: match.joue ?? false,
-        clubDomicile: code1 === CLUB_CODE,
+        clubDomicile: code1 === clubCode,
         poule: poule.nom ?? pool.nom,
         salle: salle?.libelle ?? null,
         ville: salle?.commune?.libelle ?? null,
       });
     }
   }
-
-  const rencontres = [...matches.values()].sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  );
-
-  const resultat = {
-    club: club.nom,
-    codeClub: club.code ?? CLUB_CODE,
-    genereLe: new Date().toISOString(),
-    nombreRencontres: rencontres.length,
-    rencontres,
-  };
-
-  await writeFile(
-    OUTPUT,
-    JSON.stringify(resultat, null, 2),
-    "utf8"
-  );
-
-  console.log(
-    `${rencontres.length} rencontres écrites dans ${OUTPUT}.`
-  );
+  
 }
 
 main().catch((error) => {
