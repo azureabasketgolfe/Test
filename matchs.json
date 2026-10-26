@@ -1,6 +1,6 @@
 {
-  "genereLe": "2026-10-25T21:29:42.679Z",
-  "nombreRencontres": 352,
+  "genereLe": "2026-10-26T21:11:55.637Z",
+  "nombreRencontres": 344,
   "rencontres": [
     {
       "id": "200000014659691",
@@ -1603,22 +1603,6 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014938294",
-      "categorie": "Pré régional masculine U13 phase 2 ",
-      "date": "2026-11-07T00:00:00",
-      "journee": "1",
-      "numero": "8500",
-      "domicile": "AC GOLFE JUAN VALLAURIS - 1",
-      "exterieur": "GSE METROPOLITAINS DE NICE - 1",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule A",
-      "salle": "GYMNASE JACQUES ALLINEI",
-      "ville": "VALLAURIS/GOLFE JUAN"
-    },
-    {
       "id": "200000014938345",
       "categorie": "Départementale masculine U13-2 poule A phase 2 ",
       "date": "2026-11-07T00:00:00",
@@ -1683,22 +1667,6 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014812810",
-      "categorie": "Départementale féminine U15",
-      "date": "2026-11-07T00:00:00",
-      "journee": "4",
-      "numero": "1077",
-      "domicile": "MANDELIEU LA NAPOULE BASKET AVENIR",
-      "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule B",
-      "salle": "SALLE OLYMPIE",
-      "ville": "MANDELIEU-LA-NAPOULE"
-    },
-    {
       "id": "200000014858521",
       "categorie": "Départementale féminine U13 - Division 2",
       "date": "2026-11-07T00:00:00",
@@ -1745,6 +1713,22 @@
       "poule": "Poule D",
       "salle": "SALLE SALUSSE SANTONI",
       "ville": "ANTIBES"
+    },
+    {
+      "id": "200000014812810",
+      "categorie": "Départementale féminine U15",
+      "date": "2026-11-07T13:30:00",
+      "journee": "4",
+      "numero": "1077",
+      "domicile": "MANDELIEU LA NAPOULE BASKET AVENIR",
+      "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule B",
+      "salle": "SALLE OLYMPIE",
+      "ville": "MANDELIEU-LA-NAPOULE"
     },
     {
       "id": "200000014899300",
@@ -1971,22 +1955,6 @@
       "ville": "SAINT-LAURENT-DU-VAR"
     },
     {
-      "id": "200000014938216",
-      "categorie": "Départementale Masculine U15-2 Phase 2",
-      "date": "2026-11-14T00:00:00",
-      "journee": "2",
-      "numero": "8262",
-      "domicile": "AC GOLFE JUAN VALLAURIS",
-      "exterieur": "UNION SPORTIVE SOPHIA BASKET",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule A",
-      "salle": "GYMNASE JACQUES ALLINEI",
-      "ville": "VALLAURIS/GOLFE JUAN"
-    },
-    {
       "id": "200000014939151",
       "categorie": "Départementale Masculine U15-2 Phase 2",
       "date": "2026-11-14T00:00:00",
@@ -2003,11 +1971,11 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014938302",
+      "id": "200000014939230",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-11-14T00:00:00",
       "journee": "2",
-      "numero": "8508",
+      "numero": "8504",
       "domicile": "BASKET AZUR CLUB",
       "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
       "scoreDomicile": null,
@@ -2019,11 +1987,11 @@
       "ville": "BEAULIEU-SUR-MER"
     },
     {
-      "id": "200000014939230",
+      "id": "200000014938302",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-11-14T00:00:00",
       "journee": "2",
-      "numero": "8504",
+      "numero": "8508",
       "domicile": "BASKET AZUR CLUB",
       "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
       "scoreDomicile": null,
@@ -2049,38 +2017,6 @@
       "poule": "Poule B",
       "salle": "GYMNASE JEAN DANDREIS",
       "ville": "VENCE"
-    },
-    {
-      "id": "200000014939531",
-      "categorie": "Pré régionale masculine U11 ",
-      "date": "2026-11-14T00:00:00",
-      "journee": "1",
-      "numero": "8750",
-      "domicile": "AC GOLFE JUAN VALLAURIS - 1",
-      "exterieur": "US CAGNES SUR MER - 1",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule A",
-      "salle": "GYMNASE JACQUES ALLINEI",
-      "ville": "VALLAURIS/GOLFE JUAN"
-    },
-    {
-      "id": "200000014939547",
-      "categorie": "Pré régionale masculine U11 ",
-      "date": "2026-11-14T00:00:00",
-      "journee": "2",
-      "numero": "8754",
-      "domicile": "LE CANNET COTE D'AZUR BASKET",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "GYMNASE PRINCIPIANO",
-      "ville": "LE CANNET"
     },
     {
       "id": "200000014939203",
@@ -2161,6 +2097,22 @@
       "poule": "Poule A",
       "salle": "SALLE SALUSSE SANTONI",
       "ville": "ANTIBES"
+    },
+    {
+      "id": "200000014939547",
+      "categorie": "Pré régionale masculine U11 ",
+      "date": "2026-11-14T11:30:00",
+      "journee": "2",
+      "numero": "8754",
+      "domicile": "LE CANNET COTE D'AZUR BASKET",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule A",
+      "salle": "GYMNASE PRINCIPIANO",
+      "ville": "LE CANNET"
     },
     {
       "id": "200000014899320",
@@ -2307,22 +2259,6 @@
       "ville": "CAGNES-SUR-MER"
     },
     {
-      "id": "200000014939088",
-      "categorie": "Départementale masculine U18-2 phase 2 ",
-      "date": "2026-11-15T00:00:00",
-      "journee": "2",
-      "numero": "9109",
-      "domicile": "NICE BASKET ASSOCIATION OUEST",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule B",
-      "salle": "SALLE JULES ROMAIN",
-      "ville": "NICE"
-    },
-    {
       "id": "200000014661676",
       "categorie": "Régionale masculine U18 - Division 2",
       "date": "2026-11-15T09:00:00",
@@ -2337,6 +2273,22 @@
       "poule": "Poule L",
       "salle": "GYMNASE SCOLAIRE LOUIS II",
       "ville": "MONACO"
+    },
+    {
+      "id": "200000014939088",
+      "categorie": "Départementale masculine U18-2 phase 2 ",
+      "date": "2026-11-15T10:30:00",
+      "journee": "2",
+      "numero": "9109",
+      "domicile": "NICE BASKET ASSOCIATION OUEST",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule B",
+      "salle": "SALLE JULES ROMAIN",
+      "ville": "NICE"
     },
     {
       "id": "200000014900342",
@@ -2595,27 +2547,11 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014938229",
-      "categorie": "Départementale Masculine U15-2 Phase 2",
-      "date": "2026-11-28T00:00:00",
-      "journee": "3",
-      "numero": "8275",
-      "domicile": "AC GOLFE JUAN VALLAURIS",
-      "exterieur": "BASKET CLUB DU PAYS DE FAYENCE",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule A",
-      "salle": "GYMNASE JACQUES ALLINEI",
-      "ville": "VALLAURIS/GOLFE JUAN"
-    },
-    {
-      "id": "200000014938318",
+      "id": "200000014939238",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-11-28T00:00:00",
       "journee": "4",
-      "numero": "8524",
+      "numero": "8512",
       "domicile": "GSE METROPOLITAINS DE NICE - 1",
       "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
       "scoreDomicile": null,
@@ -2627,11 +2563,11 @@
       "ville": "NICE"
     },
     {
-      "id": "200000014939238",
+      "id": "200000014938318",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-11-28T00:00:00",
       "journee": "4",
-      "numero": "8512",
+      "numero": "8524",
       "domicile": "GSE METROPOLITAINS DE NICE - 1",
       "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
       "scoreDomicile": null,
@@ -2657,22 +2593,6 @@
       "poule": "Poule B",
       "salle": "GYMNASE Emilie FER",
       "ville": "COLLE-SUR-LOUP"
-    },
-    {
-      "id": "200000014939536",
-      "categorie": "Pré régionale masculine U11 ",
-      "date": "2026-11-28T00:00:00",
-      "journee": "2",
-      "numero": "8755",
-      "domicile": "CAVIGAL NICE BASKET 06",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "COMPLEXE SPORTIF Serge LEYRIT",
-      "ville": "NICE"
     },
     {
       "id": "200000014939555",
@@ -2739,6 +2659,22 @@
       "ville": "VOIRON"
     },
     {
+      "id": "200000014939094",
+      "categorie": "Départementale masculine U18-2 phase 2 ",
+      "date": "2026-11-28T16:30:00",
+      "journee": "3",
+      "numero": "9115",
+      "domicile": "COV VALBONNE",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule B",
+      "salle": "SALLE DES BOUILLIDES",
+      "ville": "VALBONNE"
+    },
+    {
       "id": "200000014915894",
       "categorie": "Régionale féminine U18",
       "date": "2026-11-28T18:00:00",
@@ -2801,22 +2737,6 @@
       "poule": "Poule B",
       "salle": "GYMNASE JEAN GRANELLE",
       "ville": "VILLENEUVE-LOUBET"
-    },
-    {
-      "id": "200000014939094",
-      "categorie": "Départementale masculine U18-2 phase 2 ",
-      "date": "2026-11-29T00:00:00",
-      "journee": "3",
-      "numero": "9115",
-      "domicile": "COV VALBONNE",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule B",
-      "salle": "SALLE DES BOUILLIDES",
-      "ville": "VALBONNE"
     },
     {
       "id": "200000014661681",
@@ -2931,22 +2851,6 @@
       "ville": "SAINT-LAURENT-DU-VAR"
     },
     {
-      "id": "200000014938240",
-      "categorie": "Départementale Masculine U15-2 Phase 2",
-      "date": "2026-12-05T00:00:00",
-      "journee": "4",
-      "numero": "8286",
-      "domicile": "AC GOLFE JUAN VALLAURIS",
-      "exterieur": "CLUB TENNIS ET BASKETBALL NICE",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule A",
-      "salle": "GYMNASE JACQUES ALLINEI",
-      "ville": "VALLAURIS/GOLFE JUAN"
-    },
-    {
       "id": "200000014939175",
       "categorie": "Départementale Masculine U15-2 Phase 2",
       "date": "2026-12-05T00:00:00",
@@ -2986,22 +2890,6 @@
       "numero": "8532",
       "domicile": "AC GOLFE JUAN VALLAURIS - 1",
       "exterieur": "BASKET AZUR CLUB",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule A",
-      "salle": "GYMNASE JACQUES ALLINEI",
-      "ville": "VALLAURIS/GOLFE JUAN"
-    },
-    {
-      "id": "200000014939539",
-      "categorie": "Pré régionale masculine U11 ",
-      "date": "2026-12-05T00:00:00",
-      "journee": "3",
-      "numero": "8758",
-      "domicile": "AC GOLFE JUAN VALLAURIS - 1",
-      "exterieur": "LE CANNET COTE D'AZUR BASKET",
       "scoreDomicile": null,
       "scoreExterieur": null,
       "joue": false,
@@ -3283,22 +3171,6 @@
       "ville": "SAINT-JEANNET"
     },
     {
-      "id": "200000014938253",
-      "categorie": "Départementale Masculine U15-2 Phase 2",
-      "date": "2026-12-12T00:00:00",
-      "journee": "5",
-      "numero": "8299",
-      "domicile": "BASKET CLUB DES BAOUS",
-      "exterieur": "AC GOLFE JUAN VALLAURIS",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "GYMN. COLLEGE DES BAOUS",
-      "ville": "SAINT-JEANNET"
-    },
-    {
       "id": "200000014939246",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-12-12T00:00:00",
@@ -3381,7 +3253,7 @@
     {
       "id": "200000014899255",
       "categorie": "Régionale féminine U13 - Division 2",
-      "date": "2026-12-12T14:00:00",
+      "date": "2026-12-12T13:15:00",
       "journee": "5",
       "numero": "14527",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
@@ -3747,6 +3619,22 @@
       "ville": "ROQUEBRUNE-CAP-MARTIN"
     },
     {
+      "id": "200000014899267",
+      "categorie": "Régionale féminine U13 - Division 2",
+      "date": "2027-01-16T13:15:00",
+      "journee": "7",
+      "numero": "14539",
+      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
+      "exterieur": "IE - CTC LES BALCONS D'AZUR",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": true,
+      "poule": "Poule B",
+      "salle": "SALLE SALUSSE SANTONI",
+      "ville": "ANTIBES"
+    },
+    {
       "id": "200000014899420",
       "categorie": "Régionale masculine U13",
       "date": "2027-01-16T14:00:00",
@@ -3761,22 +3649,6 @@
       "poule": "R2 B",
       "salle": "GYMNASE JACQUES ALLINEI",
       "ville": "VALLAURIS/GOLFE JUAN"
-    },
-    {
-      "id": "200000014899267",
-      "categorie": "Régionale féminine U13 - Division 2",
-      "date": "2027-01-16T14:00:00",
-      "journee": "7",
-      "numero": "14539",
-      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
-      "exterieur": "IE - CTC LES BALCONS D'AZUR",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule B",
-      "salle": "SALLE SALUSSE SANTONI",
-      "ville": "ANTIBES"
     },
     {
       "id": "200000014601361",
@@ -5253,7 +5125,7 @@
     {
       "id": "200000014939077",
       "categorie": "Pré régionale masculine U18 phase 2 ",
-      "date": "2027-04-04T00:00:00",
+      "date": "2027-04-04T10:00:00",
       "journee": "14",
       "numero": "9110",
       "domicile": "CANSA BASKET",
