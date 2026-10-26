@@ -6,6 +6,56 @@ const CLUB_CODE_GOLFE = "SUD0006008";
 const CLUB_CODE_CTC = "SUD0006012";
 const OUTPUT = "matchs.json";
 
+const engagements_golfe = [
+"1/16 COUPE Sud U18M",
+"COUPE Sud Senior Masculin 1er tour",
+"Départementale Masculine U15-2 Phase 2",
+"Départementale masculine U11",
+"Départementale masculine U11 - 3 phase ",
+"Départementale masculine U11 - Division 3",
+"Départementale masculine U13 - 2 poule B phase 2",
+"Départementale masculine U13-2 poule A phase 2 ",
+"Départementale masculine U18-2 phase 2 ",
+"NATIONALE MASCULINE 3",
+"Phase 1 - Départemental Masculine U18 Division - 3",
+"Phase 1 - Départementale masculine U13 - 3",
+"Phase 1 - Départementale masculine U15 - 2",
+"Phase 1 - Pré Région masculine U18",
+"Phase 1 - Pré région masculine U13 - 1",
+"Pré nationale masculine",
+"Pré régional masculine U13 phase 2 ",
+"Pré régionale masculine",
+"Pré régionale masculine U11 ",
+"Pré régionale masculine U18 phase 2 ",
+"Régionale masculine U13",
+"Régionale masculine U13 - Phase 2",
+"Régionale masculine U15",
+"Régionale masculine U15 - Phase 2",
+"Régionale masculine U18 - Division 2",
+"Régionale masculine U21",
+];
+
+const engagements_ctc = [
+"1/4 COUPE Sud Senior Féminine ",
+"1/4 COUPE Sud U18F ",
+"1/8 COUPE Sud Senior Féminine ",
+"1/8 COUPE Sud U18F ",
+"AMICAL NF1",
+"Départementale féminine U11",
+"Départementale féminine U13 - Division 2",
+"Départementale féminine U15",
+"Départementale féminine U18",
+"NATIONALE FEMININE 2",
+"Pré nationale féminine",
+"Pré régionale féminine",
+"Régionale féminine U13",
+"Régionale féminine U13 - Division 2",
+"Régionale féminine U15",
+"Régionale féminine U15 - Phase 2",
+"Régionale féminine U18",
+"Régionale féminine U18 - Phase 2",
+];
+
   const fields = [
     "id",
     "code",
@@ -165,8 +215,8 @@ async function main() {
 
   const matches = new Map();
 
-  await rechercherRencontres(matches,clubGolfe,CLUB_CODE_GOLFE);
-  await rechercherRencontres(matches,clubCtc,CLUB_CODE_CTC);
+  await rechercherRencontres(matches,clubGolfe,CLUB_CODE_GOLFE,engagements_golfe);
+  await rechercherRencontres(matches,clubCtc,CLUB_CODE_CTC,engagements_ctc);
 
   const rencontres = [...matches.values()].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
@@ -193,20 +243,30 @@ async function main() {
 
 }
 
-async function rechercherRencontres(matches,club,clubCode) {
+async function rechercherRencontres(matches,club,clubCode,engagements_connus) {
 
   const engagements = club.engagements ?? [];
-console.log(
+/*console.log(
   [...new Set(
     engagements.map(e => e.idCompetition?.nom).filter(Boolean)
   )].sort().join("\n")
 );
+*/
 
- console.log(`${engagements.length} engagements trouvés.`);
+// Création d'un Set pour accélérer les recherches
+const engagementsConnus = new Set(engagements_connus);
+
+ console.log(`${engagements.length} engagements trouvés pour ${club.nom}.`);
 
   const pools = new Map();
 
   for (const engagement of engagements) {
+     // Vérification des engagements récupérés depuis l'API
+     const nomEngagement = engagement.idCompetition.nom;
+     if (nomEngagement && !engagementsConnus.has(nomEngagement)) {
+	console.warn(`[ENGAGEMENT INCONNU] Engagement absent de engagements_golfe : "${nomEngagement}"`);
+     }
+
     const poolId = relationId(engagement.idPoule);
     if (!poolId) continue;
 
@@ -232,9 +292,9 @@ const categorie =
 
 
   for (const pool of pools.values()) {
-    console.log(
+   /* console.log(
       `Lecture de la poule ${pool.nom || pool.id}...`
-    );
+    );*/
 
     const poolData = await apiGet(
       `ffbbserver_poules/${encodeURIComponent(pool.id)}`,
