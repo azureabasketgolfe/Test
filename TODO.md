@@ -13,3 +13,5 @@ le doc guideveloppeur est fait mais il faudra peut etre revoir des choses
 	Frequemment il faudra faire un git clone. Peut etre automatiser la tache en fait .
 
 Documenter les fichiers
+
+Readapter pour le faire sur le repo officiel
