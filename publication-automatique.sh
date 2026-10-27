@@ -17,6 +17,10 @@ HOME_DIR="${HOME:?ERREUR : variable HOME absente}"
 
 export GIT_SSH_COMMAND="ssh -i $HOME_DIR/.ssh/azurea_github -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes"
 
+# Identite utilisee pour les commits Git
+/bin/git config user.name "Azurea Basket Bot" || exit 1
+/bin/git config user.email "azurea-basket-bot@users.noreply.github.com" || exit 1
+
 LOG="$REPOLOG/publication-automatique.log"
 exec >> "$LOG" 2>&1
 echo
