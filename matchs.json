@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-10-26T21:11:55.637Z",
+  "genereLe": "2026-10-27T16:23:51.618Z",
   "nombreRencontres": 344,
   "rencontres": [
     {
@@ -1695,7 +1695,7 @@
       "joue": false,
       "clubDomicile": true,
       "poule": "Poule C",
-      "salle": "SALLE SALUSSE SANTONI",
+      "salle": "petite salle foch",
       "ville": "ANTIBES"
     },
     {
@@ -1711,6 +1711,22 @@
       "joue": false,
       "clubDomicile": true,
       "poule": "Poule D",
+      "salle": "petite salle foch",
+      "ville": "ANTIBES"
+    },
+    {
+      "id": "200000014899231",
+      "categorie": "Régionale féminine U13 - Division 2",
+      "date": "2026-11-07T13:15:00",
+      "journee": "1",
+      "numero": "14503",
+      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
+      "exterieur": "CAVIGAL NICE BASKET 06",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": true,
+      "poule": "Poule B",
       "salle": "SALLE SALUSSE SANTONI",
       "ville": "ANTIBES"
     },
@@ -1747,25 +1763,9 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014899231",
-      "categorie": "Régionale féminine U13 - Division 2",
-      "date": "2026-11-07T14:00:00",
-      "journee": "1",
-      "numero": "14503",
-      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
-      "exterieur": "CAVIGAL NICE BASKET 06",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule B",
-      "salle": "SALLE SALUSSE SANTONI",
-      "ville": "ANTIBES"
-    },
-    {
       "id": "200000014915663",
       "categorie": "Régionale féminine U15",
-      "date": "2026-11-07T16:00:00",
+      "date": "2026-11-07T15:00:00",
       "journee": "1",
       "numero": "16507",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
@@ -1971,22 +1971,6 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014939230",
-      "categorie": "Pré régional masculine U13 phase 2 ",
-      "date": "2026-11-14T00:00:00",
-      "journee": "2",
-      "numero": "8504",
-      "domicile": "BASKET AZUR CLUB",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "GYMNASE PASCAL MANINI",
-      "ville": "BEAULIEU-SUR-MER"
-    },
-    {
       "id": "200000014938302",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-11-14T00:00:00",
@@ -2083,22 +2067,6 @@
       "ville": "ROQUEBRUNE-CAP-MARTIN"
     },
     {
-      "id": "200000014858524",
-      "categorie": "Départementale féminine U13 - Division 2",
-      "date": "2026-11-14T00:00:00",
-      "journee": "2",
-      "numero": "3003",
-      "domicile": "OL. ANTIBES BASKET AMA",
-      "exterieur": "ROQUEBRUNE CAP MARTIN BASKET",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule A",
-      "salle": "SALLE SALUSSE SANTONI",
-      "ville": "ANTIBES"
-    },
-    {
       "id": "200000014939547",
       "categorie": "Pré régionale masculine U11 ",
       "date": "2026-11-14T11:30:00",
@@ -2115,6 +2083,22 @@
       "ville": "LE CANNET"
     },
     {
+      "id": "200000014858524",
+      "categorie": "Départementale féminine U13 - Division 2",
+      "date": "2026-11-14T11:45:00",
+      "journee": "2",
+      "numero": "3003",
+      "domicile": "OL. ANTIBES BASKET AMA",
+      "exterieur": "ROQUEBRUNE CAP MARTIN BASKET",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": true,
+      "poule": "Poule A",
+      "salle": "petite salle foch",
+      "ville": "ANTIBES"
+    },
+    {
       "id": "200000014899320",
       "categorie": "Régionale masculine U13",
       "date": "2026-11-14T14:00:00",
@@ -2129,6 +2113,22 @@
       "poule": "R2 B",
       "salle": "MAISON DES SPORTS",
       "ville": "CAGNES-SUR-MER"
+    },
+    {
+      "id": "200000014939230",
+      "categorie": "Pré régional masculine U13 phase 2 ",
+      "date": "2026-11-14T14:00:00",
+      "journee": "2",
+      "numero": "8504",
+      "domicile": "BASKET AZUR CLUB",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule A",
+      "salle": "GYMNASE PASCAL MANINI",
+      "ville": "BEAULIEU-SUR-MER"
     },
     {
       "id": "200000014899237",
@@ -2149,7 +2149,7 @@
     {
       "id": "200000014812818",
       "categorie": "Départementale féminine U15",
-      "date": "2026-11-14T14:30:00",
+      "date": "2026-11-14T15:00:00",
       "journee": "5",
       "numero": "1085",
       "domicile": "EN - CTC TEAM GOLFE - ANTIBES",
@@ -2159,6 +2159,22 @@
       "joue": false,
       "clubDomicile": true,
       "poule": "Poule B",
+      "salle": "petite salle foch",
+      "ville": "ANTIBES"
+    },
+    {
+      "id": "200000014915890",
+      "categorie": "Régionale féminine U18",
+      "date": "2026-11-14T15:00:00",
+      "journee": "2",
+      "numero": "190010",
+      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
+      "exterieur": "UA VALETTOISE BASKET",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": true,
+      "poule": "R1 B",
       "salle": "SALLE SALUSSE SANTONI",
       "ville": "ANTIBES"
     },
@@ -2191,22 +2207,6 @@
       "joue": false,
       "clubDomicile": true,
       "poule": "Poule A",
-      "salle": "SALLE SALUSSE SANTONI",
-      "ville": "ANTIBES"
-    },
-    {
-      "id": "200000014915890",
-      "categorie": "Régionale féminine U18",
-      "date": "2026-11-14T18:00:00",
-      "journee": "2",
-      "numero": "190010",
-      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
-      "exterieur": "UA VALETTOISE BASKET",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "R1 B",
       "salle": "SALLE SALUSSE SANTONI",
       "ville": "ANTIBES"
     },
@@ -2453,7 +2453,7 @@
     {
       "id": "200000014858526",
       "categorie": "Départementale féminine U13 - Division 2",
-      "date": "2026-11-21T00:00:00",
+      "date": "2026-11-21T15:00:00",
       "journee": "3",
       "numero": "3005",
       "domicile": "OL. ANTIBES BASKET AMA",
@@ -2469,7 +2469,7 @@
     {
       "id": "200000014812825",
       "categorie": "Départementale féminine U15",
-      "date": "2026-11-21T13:15:00",
+      "date": "2026-11-21T16:45:00",
       "journee": "6",
       "numero": "1092",
       "domicile": "EN - CTC TEAM GOLFE - ANTIBES",
@@ -2547,11 +2547,11 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014939238",
+      "id": "200000014938318",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-11-28T00:00:00",
       "journee": "4",
-      "numero": "8512",
+      "numero": "8524",
       "domicile": "GSE METROPOLITAINS DE NICE - 1",
       "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
       "scoreDomicile": null,
@@ -2563,11 +2563,11 @@
       "ville": "NICE"
     },
     {
-      "id": "200000014938318",
+      "id": "200000014939238",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-11-28T00:00:00",
       "journee": "4",
-      "numero": "8524",
+      "numero": "8512",
       "domicile": "GSE METROPOLITAINS DE NICE - 1",
       "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
       "scoreDomicile": null,
@@ -2677,7 +2677,7 @@
     {
       "id": "200000014915894",
       "categorie": "Régionale féminine U18",
-      "date": "2026-11-28T18:00:00",
+      "date": "2026-11-28T17:00:00",
       "journee": "3",
       "numero": "190014",
       "domicile": "STADE LAURENTIN BASKET",
@@ -3011,6 +3011,22 @@
       "ville": "ANTIBES"
     },
     {
+      "id": "200000014938998",
+      "categorie": "Pré régionale masculine U18 phase 2 ",
+      "date": "2026-12-05T19:00:00",
+      "journee": "4",
+      "numero": "9031",
+      "domicile": "MENTON BASKET CLUB",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule B",
+      "salle": "GYMNASE DU CAREI",
+      "ville": "MENTON"
+    },
+    {
       "id": "200000014599422",
       "categorie": "NATIONALE MASCULINE 3",
       "date": "2026-12-05T20:00:00",
@@ -3025,22 +3041,6 @@
       "poule": "Poule A",
       "salle": "HALLE DES SPORTS AUBENAS",
       "ville": "AUBENAS"
-    },
-    {
-      "id": "200000014938998",
-      "categorie": "Pré régionale masculine U18 phase 2 ",
-      "date": "2026-12-06T00:00:00",
-      "journee": "4",
-      "numero": "9031",
-      "domicile": "MENTON BASKET CLUB",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule B",
-      "salle": "GYMNASE DU CAREI",
-      "ville": "MENTON"
     },
     {
       "id": "200000014939102",
