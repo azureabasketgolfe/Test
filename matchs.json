@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-10-27T16:23:51.618Z",
+  "genereLe": "2026-10-27T17:02:14.137Z",
   "nombreRencontres": 344,
   "rencontres": [
     {
@@ -3301,7 +3301,7 @@
     {
       "id": "200000014915902",
       "categorie": "Régionale féminine U18",
-      "date": "2026-12-12T18:00:00",
+      "date": "2026-12-12T17:00:00",
       "journee": "5",
       "numero": "190022",
       "domicile": "LA SEYNE BASKET",
@@ -3461,7 +3461,7 @@
     {
       "id": "200000014915682",
       "categorie": "Régionale féminine U15",
-      "date": "2027-01-09T16:00:00",
+      "date": "2027-01-09T15:00:00",
       "journee": "6",
       "numero": "16526",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
@@ -3493,7 +3493,7 @@
     {
       "id": "200000014915904",
       "categorie": "Régionale féminine U18",
-      "date": "2027-01-09T18:00:00",
+      "date": "2027-01-09T17:00:00",
       "journee": "6",
       "numero": "190024",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
@@ -3861,7 +3861,7 @@
     {
       "id": "200000014915691",
       "categorie": "Régionale féminine U15",
-      "date": "2027-01-23T16:00:00",
+      "date": "2027-01-23T15:00:00",
       "journee": "8",
       "numero": "16535",
       "domicile": "STADE LAURENTIN BASKET",
@@ -3987,6 +3987,22 @@
       "ville": "GRASSE"
     },
     {
+      "id": "200000014899279",
+      "categorie": "Régionale féminine U13 - Division 2",
+      "date": "2027-01-30T13:15:00",
+      "journee": "9",
+      "numero": "14551",
+      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
+      "exterieur": "ETOILE SAINT BARTHELEMY NICE BASKET",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": true,
+      "poule": "Poule B",
+      "salle": "SALLE SALUSSE SANTONI",
+      "ville": "ANTIBES"
+    },
+    {
       "id": "200000014899460",
       "categorie": "Régionale masculine U13",
       "date": "2027-01-30T14:00:00",
@@ -4003,25 +4019,9 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014899279",
-      "categorie": "Régionale féminine U13 - Division 2",
-      "date": "2027-01-30T14:00:00",
-      "journee": "9",
-      "numero": "14551",
-      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
-      "exterieur": "ETOILE SAINT BARTHELEMY NICE BASKET",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule B",
-      "salle": "SALLE SALUSSE SANTONI",
-      "ville": "ANTIBES"
-    },
-    {
       "id": "200000014915694",
       "categorie": "Régionale féminine U15",
-      "date": "2027-01-30T16:00:00",
+      "date": "2027-01-30T15:00:00",
       "journee": "9",
       "numero": "16538",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
@@ -4357,7 +4357,7 @@
     {
       "id": "200000014915922",
       "categorie": "Régionale féminine U18",
-      "date": "2027-02-13T18:00:00",
+      "date": "2027-02-13T17:00:00",
       "journee": "10",
       "numero": "190042",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
@@ -4613,7 +4613,7 @@
     {
       "id": "200000014915703",
       "categorie": "Régionale féminine U15",
-      "date": "2027-03-13T16:00:00",
+      "date": "2027-03-13T15:00:00",
       "journee": "11",
       "numero": "16547",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
@@ -4805,7 +4805,7 @@
     {
       "id": "200000014915930",
       "categorie": "Régionale féminine U18",
-      "date": "2027-03-20T18:00:00",
+      "date": "2027-03-20T17:00:00",
       "journee": "12",
       "numero": "190050",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
