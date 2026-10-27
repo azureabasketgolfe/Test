@@ -15,3 +15,5 @@ le doc guideveloppeur est fait mais il faudra peut etre revoir des choses
 Documenter les fichiers
 
 Readapter pour le faire sur le repo officiel
+
+Faire le menage sur le NAS et penser à supprimer les fichiers .log. A faire uniquement quand on lance le script
