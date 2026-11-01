@@ -505,6 +505,14 @@ Le script ne doit ajouter et publier que `matchs.json`, afin de ne pas envoyer a
 
 **Précaution :** si plusieurs utilisateurs modifient simultanément la branche `main`, le push peut être rejeté. Dans ce cas, il faut récupérer les changements distants et résoudre les éventuels conflits avant de relancer la publication.
 
+**N.B:**  Pour que le script soit totalement autonome, l'identité est configurée dans le script :
+```sh
+cd /volume1/AzureaBasket/depot
+
+git config user.name "Azurea Basket Bot"
+git config user.email "azurea-basket-bot@users.noreply.github.com"
+```
+
 # 6. Format du script et permissions
 
 ## 6.1. Corriger les fins de ligne Windows
