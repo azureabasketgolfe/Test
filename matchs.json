@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-01T10:46:51.650Z",
+  "genereLe": "2026-11-01T18:53:27.100Z",
   "nombreRencontres": 364,
   "rencontres": [
     {
@@ -1674,9 +1674,9 @@
       "numero": "2025",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
       "exterieur": "CAVAILLON ESPOIR BASKET CLUB",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
+      "scoreDomicile": "69",
+      "scoreExterieur": "41",
+      "joue": true,
       "clubDomicile": true,
       "poule": "Poule A",
       "salle": "SALLE SALUSSE SANTONI",
