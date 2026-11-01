@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'matchs.json'
+      - 'ajout-competition.json'
 
 permissions:
   contents: read
@@ -18,7 +18,7 @@ jobs:
       - name: Recuperer le depot
         uses: actions/checkout@v4
 
-      - name: Envoyer un email avec matchs.json
+      - name: Envoyer un email avec ajout-competition.json
         uses: dawidd6/action-send-mail@v6
         with:
           server_address: smtp.mail.yahoo.com
@@ -32,15 +32,15 @@ jobs:
           body: |
             Bonjour,
 
-            Le fichier matchs.json a été modifié et publié sur GitHub.
+            Le fichier ajout-competition.json a été modifié et publié sur GitHub.
 
             Dépôt : ${{ github.repository }}
             Branche : ${{ github.ref_name }}
             Auteur : ${{ github.event.head_commit.author.name }}
             Message : ${{ github.event.head_commit.message }}
 
-            Le fichier matchs.json est joint à cet e-mail.
+            Le fichier ajout-competition.json est joint à cet e-mail.
 
             Consulter le commit :
             ${{ github.event.compare }}
-          attachments: matchs.json
+          attachments: ajout-competition.json

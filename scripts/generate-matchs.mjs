@@ -5,6 +5,7 @@ const API = "https://api.ffbb.com";
 const CLUB_CODE_GOLFE = "SUD0006008";
 const CLUB_CODE_CTC = "SUD0006012";
 const OUTPUT = "matchs.json";
+const OUTPUT_NEW_COMPETITIONS = "ajout-competition.json";
 
 const engagements_golfe = [
   "1/16 COUPE Sud U18M",
@@ -254,26 +255,34 @@ async function main() {
     `Club trouvé : ${clubCtc.nom} (id=${clubCtc.id}, code=${clubCtc.code})`
   );
 
+  // Création d'une Map pour stocker les rencontres uniques par identifiant.
   const matches = new Map();
+
+  // Création d'un tableau pour stocker les nouvelles compétitions.
+  const new_competitions = new Array();
 
   await rechercherRencontres(
     matches,
     clubGolfe,
     CLUB_CODE_GOLFE,
-    engagements_golfe
+    engagements_golfe,
+    new_competitions
   );
 
   await rechercherRencontres(
     matches,
     clubCtc,
     CLUB_CODE_CTC,
-    engagements_ctc
+    engagements_ctc,
+    new_competitions
   );
 
+  // Tri des rencontres par date croissante.
   const rencontres = [...matches.values()].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   );
 
+  // Écriture du fichier JSON de sortie pour les rencontres de toutes les équipes.
   const resultat = {
     genereLe: new Date().toISOString(),
     nombreRencontres: rencontres.length,
@@ -289,13 +298,34 @@ async function main() {
     JSON.stringify(resultat, null, 2),
     "utf8"
   );
+
+  // Ecrire le fichier des nouvelles competitions découvertes. uniquement quand le tableau n'est pas vide.
+  if (new_competitions.length > 0) {
+    console.log(
+      `${new_competitions.length} nouvelles compétitions écrites dans ${OUTPUT_NEW_COMPETITIONS}.`
+    );
+
+    // Écriture du fichier JSON de sortie pour les nouvelles compétitions.
+    const competitionsResult = {
+      genereLe: new Date().toISOString(),
+      competitions: new_competitions,
+    };
+
+    await fs.writeFile(
+      OUTPUT_COMPETITIONS,
+      JSON.stringify(competitionsResult, null, 2),
+      "utf8"
+    );
+  }
+
 }
 
 async function rechercherRencontres(
   matches,
   club,
   clubCode,
-  engagements_connus
+  engagements_connus,
+  new_competitions
 ) {
   const engagements = club.engagements || [];
 
@@ -318,8 +348,13 @@ async function rechercherRencontres(
       nomEngagement &&
       !engagementsConnus.has(nomEngagement)
     ) {
+      // Ajout de la compétition inconnue à la liste.
+      new_competitions.push({
+         club: club.nom,
+         nom: nomEngagement,
+       });           
       console.warn(
-        `[ENGAGEMENT INCONNU] Engagement absent de engagements_golfe : "${nomEngagement}"`
+        `[ENGAGEMENT INCONNU] Engagement absent pour ${club.nom} : "${nomEngagement}"`
       );
     }
 
