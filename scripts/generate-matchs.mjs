@@ -10,6 +10,7 @@ const OUTPUT_NEW_COMPETITIONS = "ajout-competition.json";
 const engagements_golfe = [
   "1/16 COUPE Sud U18M",
   "COUPE Sud Senior Masculin 1er tour",
+  "NATIONALE MASCULINE 3",
   "Départementale Masculine U15-2 Phase 2",
   "Départementale masculine U11",
   "Départementale masculine U11 - 3 phase ",
@@ -17,7 +18,6 @@ const engagements_golfe = [
   "Départementale masculine U13 - 2 poule B phase 2",
   "Départementale masculine U13-2 poule A phase 2 ",
   "Départementale masculine U18-2 phase 2 ",
-  "NATIONALE MASCULINE 3",
   "Phase 1 - Départemental Masculine U18 Division - 3",
   "Phase 1 - Départementale masculine U13 - 3",
   "Phase 1 - Départementale masculine U15 - 2",
@@ -312,7 +312,7 @@ async function main() {
     };
 
     await fs.writeFile(
-      OUTPUT_COMPETITIONS,
+      OUTPUT_NEW_COMPETITIONS,
       JSON.stringify(competitionsResult, null, 2),
       "utf8"
     );

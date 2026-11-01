@@ -65,6 +65,14 @@ if git diff --cached --quiet -- matchs.json; then
     exit 0
 fi
 
+# Ajout du fichier ajout-competition.json si il a changé
+if ! git diff --quiet -- "$REPO/ajout-competition.json"; then
+    echo "Le fichier $REPO/ajout-competition.json a été modifié."
+    git add "$REPO/ajout-competition.json"
+else
+    echo "Aucune modification de ajout-competition.json"
+fi
+
 echo "=== COMMIT ==="
 git commit -m "Mise a jour automatique des matchs" || exit 1
 
