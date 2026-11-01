@@ -2,7 +2,7 @@
 	Le script fonctionne .mjs sur le NAS et Windows
 	Publication-automatique.sh aussi, pour windows il faut l'executer via gitbash
 
-	A rajouter dans guidedeveloppeur ou readme :
+	A rajouter dans guidedeveloppeur ou readme pour windows:
 		- Installation de VsCode
   		- Utilisation de Git bash quand on est sous windows
   		- bien penser a faire un git Pull.
@@ -13,9 +13,6 @@
 	
 - Dans gitub action faire une verif si matchs.json est trop vieux d'1 semaine (via un script surement)
   	Evoyer un mail.
-
-le doc guideveloppeur est fait mais il faudra peut etre revoir des choses
-	j'ai du mettre le git user dans le script
 	
 	Frequemment il faudra faire un git clone. Peut etre automatiser la tache sur le NAS. 
 		Sur windows plutot faire un git pull
