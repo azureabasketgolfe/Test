@@ -1,0 +1,46 @@
+name: Notification modification matchs.json
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'matchs.json'
+
+permissions:
+  contents: read
+
+jobs:
+  notification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Envoyer un email avec matchs.json
+        uses: dawidd6/action-send-mail@v6
+        with:
+          server_address: smtp.mail.yahoo.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "[Azurea Basket] Calendrier des matchs mis à jour"
+          to: ${{ secrets.MAIL_TO }}
+          from: ${{ secrets.SMTP_USERNAME }}
+          body: |
+            Bonjour,
+
+            Le fichier matchs.json a été modifié et publié sur GitHub.
+
+            Dépôt : ${{ github.repository }}
+            Branche : ${{ github.ref_name }}
+            Auteur : ${{ github.event.head_commit.author.name }}
+            Message : ${{ github.event.head_commit.message }}
+
+            Le fichier matchs.json est joint à cet e-mail.
+
+            Consulter le commit :
+            ${{ github.event.compare }}
+          attachments: matchs.json
