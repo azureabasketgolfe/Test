@@ -1,4 +1,4 @@
-name: Notification modification matchs.json
+name: Notification ajout nouvelle competition
 
 on:
   push:
