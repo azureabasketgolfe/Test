@@ -1,0 +1,73 @@
+name: Surveillance generation matchs.json
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  surveillance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Recuperer le depot et son historique
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verifier la date de derniere modification
+        id: controle
+        shell: bash
+        run: |
+          LAST_COMMIT=$(git log -1 --format=%ct HEAD -- matchs.json)
+          NOW=$(date +%s)
+
+          if [ -z "$LAST_COMMIT" ]; then
+            echo "Impossible de trouver le dernier commit de matchs.json"
+            exit 1
+          fi
+
+          AGE=$((NOW - LAST_COMMIT))
+          AGE_HOURS=$((AGE / 3600))
+
+          echo "Age du fichier : $AGE_HOURS heures"
+
+          echo "age_hours=$AGE_HOURS" >> $GITHUB_OUTPUT
+
+          if [ "$AGE" -ge 60 ]; then
+            echo "stale=true" >> $GITHUB_OUTPUT
+          else
+            echo "stale=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Envoyer une alerte email
+        if: steps.controle.outputs.stale == 'true'
+        uses: dawidd6/action-send-mail@v6
+        with:
+          server_address: smtp.mail.yahoo.com
+          server_port: 465
+          secure: true
+
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+
+          subject: "[Azurea Basket] ALERTE - Calendrier non actualisé"
+          to: ${{ secrets.MAIL_TO }}
+          from: ${{ secrets.SMTP_USERNAME }}
+
+          body: |
+            Bonjour,
+
+            ATTENTION : le fichier matchs.json n'a pas été
+            modifié depuis au moins 24 heures.
+
+            Dernière modification : il y a
+            ${{ steps.controle.outputs.age_hours }} heures.
+
+            Merci de vérifier la génération et la publication
+            automatique du calendrier Azurea Basket.
+
+            Dépôt : ${{ github.repository }}
