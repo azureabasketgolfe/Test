@@ -37,7 +37,7 @@ jobs:
 
           echo "age_hours=$AGE_HOURS" >> $GITHUB_OUTPUT
 
-          if [ "$AGE" -ge 60 ]; then
+          if [ "$AGE" -ge 86400 ]; then
             echo "stale=true" >> $GITHUB_OUTPUT
           else
             echo "stale=false" >> $GITHUB_OUTPUT
